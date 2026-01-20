@@ -3,8 +3,8 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 898
-        length: 52
+      - offset: 889
+        length: 364
         placeholder_text: "...  # TODO Допишите метод. Не забываем про проверки"
         initial_state:
           length: 52
@@ -18,10 +18,10 @@ files:
                   if self.occupied_volume + volume > self.capacity_volume:
                       raise ValueError("Так перельём")
                   self.occupied_volume += volume
-        selected: false
-        status: Unchecked
-      - offset: 996
-        length: 52
+        selected: true
+        status: Solved
+      - offset: 1299
+        length: 341
         placeholder_text: "...  # TODO Допишите метод. Не забываем про проверки"
         initial_state:
           length: 52
@@ -35,20 +35,20 @@ files:
                   if self.occupied_volume - volume < 0:
                       raise ValueError("Вылить уже нечего")
                   self.occupied_volume -= volume
-        selected: false
-        status: Unchecked
-      - offset: 1111
-        length: 42
+        selected: true
+        status: Solved
+      - offset: 1703
+        length: 63
         placeholder_text: "# TODO Добавьте 50 единиц воды через метод"
         initial_state:
           length: 42
           offset: 1111
         initialized_from_dependency: false
         encrypted_possible_answer: glass.add_water(50)
-        selected: false
-        status: Unchecked
-      - offset: 1274
-        length: 60
+        selected: true
+        status: Solved
+      - offset: 1887
+        length: 85
         placeholder_text: "# TODO  Отлейте 100 единиц воды из стакана при помощи метод\
       а"
         initial_state:
@@ -56,8 +56,8 @@ files:
           offset: 1274
         initialized_from_dependency: false
         encrypted_possible_answer: glass.remove_water(100)
-        selected: false
-        status: Unchecked
+        selected: true
+        status: Solved
     learner_created: false
   - name: __init__.py
     visible: false
@@ -68,5 +68,8 @@ files:
   - name: tests/test_task.py
     visible: false
     learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 20 Jan 2026 15:27:52 UTC"
 record: -1

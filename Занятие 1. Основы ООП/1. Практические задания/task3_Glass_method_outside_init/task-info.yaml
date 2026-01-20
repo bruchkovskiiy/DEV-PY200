@@ -4,7 +4,7 @@ files:
     visible: true
     placeholders:
       - offset: 144
-        length: 317
+        length: 189
         placeholder_text: |-
           #  TODO заменить на метод init_capacity_volume как в примере (не забываем что начальное значение None)
                   if not isinstance(capacity_volume, (int, float)):
@@ -19,10 +19,10 @@ files:
         encrypted_possible_answer: |-
           self.capacity_volume = None
                   self.init_capacity_volume(capacity_volume)
-        selected: false
-        status: Unchecked
-      - offset: 555
-        length: 97
+        selected: true
+        status: Solved
+      - offset: 427
+        length: 369
         placeholder_text: "# TODO создать метод init_capacity_volume, который будет ин\
       ициализировать атрибут capacity_volume"
         initial_state:
@@ -36,10 +36,10 @@ files:
                   if not capacity_volume > 0:
                       raise ValueError
                   self.capacity_volume = capacity_volume  # объем стакана
-        selected: false
-        status: Unchecked
-      - offset: 970
-        length: 92
+        selected: true
+        status: Solved
+      - offset: 1114
+        length: 104
         placeholder_text: "...  # TODO инициализировать экземпляр класса Glass с объем\
       ом 200 и количеством жидкости 100"
         initial_state:
@@ -47,28 +47,28 @@ files:
           offset: 970
         initialized_from_dependency: false
         encrypted_possible_answer: "Glass(200, 100)"
-        selected: false
-        status: Unchecked
-      - offset: 1074
-        length: 48
+        selected: true
+        status: Solved
+      - offset: 1230
+        length: 66
         placeholder_text: "...)  # TODO распечатать атрибут capacity_volume"
         initial_state:
           length: 48
           offset: 1074
         initialized_from_dependency: false
         encrypted_possible_answer: glass.capacity_volume)
-        selected: false
-        status: Unchecked
-      - offset: 1133
-        length: 48
+        selected: true
+        status: Solved
+      - offset: 1307
+        length: 66
         placeholder_text: "...)  # TODO распечатать атрибут occupied_volume"
         initial_state:
           length: 48
           offset: 1133
         initialized_from_dependency: false
         encrypted_possible_answer: glass.occupied_volume)
-        selected: false
-        status: Unchecked
+        selected: true
+        status: Solved
     learner_created: false
   - name: __init__.py
     visible: false
@@ -76,5 +76,8 @@ files:
   - name: tests/output.txt
     visible: false
     learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 20 Jan 2026 15:17:16 UTC"
 record: -1
