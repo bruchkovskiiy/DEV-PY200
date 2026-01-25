@@ -7,6 +7,8 @@ class Product:
         total_products(число): Отслеживает общее количество товаров на складе.
         total_revenue(число): Хранит общую выручку от продаж.
     """
+    total_products = 0
+    total_revenue = 0.0
     # TODO Создайте классовые атрибуты total_products (инициализируйте нулем) и total_revenue (инициализируйте нулем)
 
     def __init__(self, name: str, price: int | float, quantity: int):
@@ -22,11 +24,11 @@ class Product:
 
     @classmethod
     def add_value_to_total_revenue(cls, value):
-        # TODO Обновите значение классового атрибута total_revenue
+        cls.total_revenue += value  # TODO Обновите значение классового атрибута total_revenue
 
     @classmethod
     def add_value_total_products(cls, value):
-        # TODO Обновите значение классового атрибута total_products
+        cls.total_products += value  # TODO Обновите значение классового атрибута total_products
 
 
     def sell(self, amount: int) -> None:
@@ -36,11 +38,12 @@ class Product:
         :param amount: Количество проданного товара
         :return:
         """
-        # TODO Проверьте, что если запрашиваемого числа товара нет на складе, то вызывается ошибка ValueError
-        # TODO Уменьшите количество товара на складе (self.quantity) на соответствующее значение (amount)
-        revenue = # TODO посчитайте выручку как количество проданного товара умноженное на цену товара
-        # TODO Добавить выручку (revenue) к классовой переменной отвечающей за общую выручку
-        # TODO Уменьшите значение классовой переменной total_products, так как общее чмсор товаров изменилось
+        if amount > self.quantity:
+            raise ValueError(f"Недостаточно товара {self.name} на складе!")  # TODO Проверьте, что если запрашиваемого числа товара нет на складе, то вызывается ошибка ValueError
+        self.quantity -= amount  # TODO Уменьшите количество товара на складе (self.quantity) на соответствующее значение (amount)
+        revenue = amount * self.price  # TODO посчитайте выручку как количество проданного товара умноженное на цену товара
+        self.add_value_to_total_revenue(revenue)  # TODO Добавить выручку (revenue) к классовой переменной отвечающей за общую выручку
+        self.add_value_total_products(-amount)  # TODO Уменьшите значение классовой переменной total_products, так как общее чмсор товаров изменилось
         print(f"Продано {amount} шт. товара {self.name}. Выручка: {revenue:.2f}")
 
     def restock(self, amount: int) -> None:
@@ -49,8 +52,8 @@ class Product:
         :param amount: Количество добавляемого товара
         :return:
         """
-        # TODO Увеличьте количество товара на складе (self.quantity) на соответствующее значение (amount)'
-        # TODO Увеличьте общее число товаров total_products (классовый атрибут)
+        self.quantity += amount  # TODO Увеличьте количество товара на складе (self.quantity) на соответствующее значение (amount)'
+        self.add_value_total_products(amount)  # TODO Увеличьте общее число товаров total_products (классовый атрибут)
         print(f"Поступило {amount} шт. товара {self.name}. Всего на складе: {self.quantity}")
 
     def __repr__(self):
@@ -67,18 +70,23 @@ class Store:
         Возвращает общее количество всех товаров в магазине.
         :return:
         """
-        # TODO Верните общее количество всех товаров в магазине.
+        return sum(product.quantity for product in self.products)  # TODO Верните общее количество всех товаров в магазине.
 
     def total_value(self):
         """
         Возвращает общую стоимость всех товаров в магазине.
         :return:
         """
-        # TODO Верните общую стоимость всех товаров в магазине.
+        return sum(product.price * product.quantity for product in self.products)  # TODO Верните общую стоимость всех товаров в магазине.
 
     @staticmethod
     def compare_prices(product1: Product, product2: Product):
-        # TODO Реализуйте сравнивание цен. Верните название товара с большей ценой, если одинаковые, то верните 'Цены одинаковы'.
+        if product1.price > product2.price:
+            return product1.name
+        elif product1.price < product2.price:
+            return product2.name
+        else:
+            return "Цены одинаковы"  # TODO Реализуйте сравнивание цен. Верните название товара с большей ценой, если одинаковые, то верните 'Цены одинаковы'.
 
 
 if __name__ == "__main__":

@@ -13,18 +13,30 @@ BOOKS_DATABASE = [
 ]
 
 
-# TODO Импортируйте и скопируйте ранее написанный класс Book
+class Book:
+    def __init__(self, id_, name, pages):
+        self.id_ = id_
+        self.name = name
+        self.pages = pages  # TODO дописать метод
 
+    def __str__(self):
+        return f'Книга "{self.name}"'  # TODO дописать метод
+
+    def __repr__(self):
+        return f"Book(id_={self.id_}, name='{self.name}', pages={self.pages})"  # TODO дописать метод
+
+
+# TODO Импортируйте и скопируйте ранее написанный класс Book
 
 class Library:
 
-    def __init__(self, books):
+    def __init__(self, books=None):
         """
         Не забудьте про 'Конструктор должен принимать необязательный аргумент со значением по умолчанию. Если пользователь
         его не передал, то библиотека инициализируется с пустым списком книг.'
         :param books:
         """
-        pass # TODO дописать метод
+        self.books = books  # TODO дописать метод
 
     def get_next_book_id(self):
         """
@@ -32,7 +44,11 @@ class Library:
         значение после этого `id`
         :return:
         """
-        pass # TODO дописать метод
+        if not self.books:
+            return 1
+            # Находим максимальный ID среди всех книг
+        return max(book.id_ for book in self.books) + 1
+        # TODO дописать метод
 
     def get_index_by_book_id(self, id_):
         """
@@ -42,7 +58,11 @@ class Library:
         :param id_: id книги
         :return: индекс, где лежит книга в списке книг
         """
-        pass # TODO дописать метод
+        for index, book in enumerate(self.books):
+            if book.id_ == id_:
+                return index
+        raise ValueError(f"Книги с запрашиваемым id {id_} не существует")
+        # TODO дописать метод
 
 
 if __name__ == '__main__':

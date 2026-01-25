@@ -1,12 +1,21 @@
 class Date:
     def __init__(self, day: int, month: int, year: int):
+        if not isinstance(day, int):
+            raise TypeError('Неверный тип day')
+        self.day = day
+        if not isinstance(month, int):
+            raise TypeError('Неверный тип month')
+        self.month = month
+        if not isinstance(year, int):
+            raise TypeError('Неверный тип year')
+        self.year = year
         # TODO Инициализируйте переменные с проверкой соответствия типа, если не соответствует, то вызывайте ошибку TypeError
 
     def __str__(self):
-        ... # TODO Реализуйте возвращение в формате DD/MM/YYYY
+        return f"{self.day:0>2}/{self.month:0>2}/{self.year:0>2}" # TODO Реализуйте возвращение в формате DD/MM/YYYY
 
     def __repr__(self):
-        ... # TODO Реализуйте возвращение в формате Date(day=..., month=..., year=...)
+        return f"{self.__class__.__name__}(day={self.day}, month={self.month}, year={self.year})" # TODO Реализуйте возвращение в формате Date(day=..., month=..., year=...)
 
 
 if __name__ == "__main__":
